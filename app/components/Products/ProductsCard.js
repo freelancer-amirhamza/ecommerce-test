@@ -2,7 +2,7 @@ import { addItem, removeItem, selectItems } from "@/app/redux/slices/basketSlice
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { BsCartCheckFill, BsFillCartPlusFill } from "react-icons/bs";
+import { BsCartCheckFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 
 
@@ -37,7 +37,7 @@ import { useDispatch, useSelector } from "react-redux";
 
  
   return (
-    <Link href={`/products`}>
+    <Link href={`/products/${product?.id} `}>
       <div className=" product-card bg-white ">
         <span
           className="bg-orange text-white text-xs px-2 
@@ -45,7 +45,8 @@ import { useDispatch, useSelector } from "react-redux";
         >
           {OffCale()} OFF{" "}
         </span>
-        <Image src={image} width={270} height={270} objectFit="contain" />
+        <div className="max-h-[270px]"></div>
+        <Image src={image} width={270}  height={270} overflow="hidden" objectFit="cover" />
         {/* products details  */}
         <div className="flex flex-col gap-1 mt-2 w-full">
           <h4 className="text-sm font-bold text-color">Farmart</h4>

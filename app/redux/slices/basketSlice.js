@@ -1,4 +1,4 @@
-import { updateLocalCart } from "@/app/utils/helpers";
+
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
@@ -18,11 +18,11 @@ export const basketSlice = createSlice({
             
         },
         removeItem: (state, action) => {
-            state.items = state.items.filter(x => x.id !== action.payload)
+            state.items = state?.items?.filter(x => x.id !== action.payload)
             
         },
         increaseItemQuantity: (state, action) => {
-            state.items = state.items.map(item => {
+            state.items = state?.items?.map(item => {
                 if (item.id !== action.payload) return item;
                 return {
                     ...item,
@@ -32,12 +32,12 @@ export const basketSlice = createSlice({
             
         },
         decreaseItemQuantity: (state, action) => {
-            state.items = state.items.map(item => {
+            state.items = state?.items?.map(item => {
                 if (item.id !== action.payload) return item;
                 if (item.quantity === 1) return false;
                 return {
                     ...item,
-                    quantity: item.quantity - 1
+                    quantity: item?.quantity - 1
                 }
             }).filter(x => x !== false)
             
@@ -48,7 +48,19 @@ export const basketSlice = createSlice({
 export const { updateBasket, addItem, removeItem, increaseItemQuantity, decreaseItemQuantity } = basketSlice.actions;
 
 export const selectItems = (state) => state.basket.items;
-export const selectTotalPrice = (state) => state.basket.items.map(x => x.price * x.quantity).reduce((a, b) => a + b, 0);
-export const selectTotalCartItems = (state) => state.basket.items.map(x => x.quantity).reduce((a, b) => a + b, 0);
-
+export const selectTotalPrice = (state) => {
+    const items = state?.basket?.items;
+    if (Array.isArray(items)) {
+        return items.map(x => x.price * x.quantity).reduce((a, b) => a + b, 0);
+    }
+    return 0;
+};
+export const selectTotalCartItems = (state) =>{
+    const items = state?.basket?.items;
+    if (Array.isArray(items)) {
+        return items.map(x => x.quantity).reduce((a, b) => a + b, 0)
+    }
+    return 0;
+    
+};
 export default basketSlice.reducer;

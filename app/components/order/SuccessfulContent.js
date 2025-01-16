@@ -3,19 +3,23 @@ import Button from '../shared/Button'
 import { useRouter } from 'next/router'
 
 const SuccessfulContent = () => {
-  const [IsTracking, setIsTracking] =React.useState(false)
+  const [isTracking, setIsTracking] =React.useState(false)
   const router = useRouter()
   const { order_id } = router.query
 
   useEffect(() => {
     setTimeout(() => {
       setIsTracking(true)
-    }, 3000)
+    }, 1000)
   }, [])
+
+  if(!order_id){
+    return <div>Loading...</div>
+  }
 
   return (
     <div className='mb-5'>
-       {!IsTracking ? (
+       {!isTracking ? (
       <> 
      <img className='mx-auto w-1/2' 
       src="/image/orderSuccess.gif"

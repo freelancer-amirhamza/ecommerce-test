@@ -7,31 +7,31 @@ import Description from './Description';
 import Reviews from './Reviews';
 
 
-const ProductMoreInfo = () => {
+const ProductMoreInfo = ({ product }) => {
   return (
     <div className="py-12 bg-white">
       <div className="container">
-       <div>
-       <Tabs color="yellow" variant="pills" radius="sm" orientation="vertical" defaultValue="gallery">
-      <Tabs.List>
-        <Tabs.Tab value="gallery" icon={<BiDetail size="1.6rem" />} > Description </Tabs.Tab>
-        <Tabs.Tab value="messages"  icon={<BsInfoSquare size="1.3rem" />}> Additional Information </Tabs.Tab>
-        <Tabs.Tab value="settings" icon={<BsStar size="1.3rem" />}>Reviews</Tabs.Tab>
-      </Tabs.List>
+        <div>
+          <Tabs color="yellow" variant="pills" radius="sm" orientation="vertical" defaultValue="gallery">
+            <Tabs.List>
+              <Tabs.Tab value="gallery" icon={<BiDetail size="1.6rem" />} > Description </Tabs.Tab>
+              <Tabs.Tab value="messages" icon={<BsInfoSquare size="1.3rem" />}> Additional Information </Tabs.Tab>
+              <Tabs.Tab value="settings" icon={<BsStar size="1.3rem" />}>Reviews</Tabs.Tab>
+            </Tabs.List>
 
-      <Tabs.Panel value="gallery" pl="xs">
-      {<Description/>}
-      </Tabs.Panel>
+            <Tabs.Panel value="gallery" pl="xs">
+              {<Description product={product} />}
+            </Tabs.Panel>
 
-      <Tabs.Panel value="messages" pl="xs">
-      {<Additional/>}
-      </Tabs.Panel>
+            <Tabs.Panel value="messages" pl="xs">
+              {<Additional product={product} />}
+            </Tabs.Panel>
 
-      <Tabs.Panel value="settings" pl="xs">
-      {<Reviews/>} 
-      </Tabs.Panel>
-    </Tabs>
-       </div>
+            <Tabs.Panel value="settings" pl="xs">
+              {<Reviews />}
+            </Tabs.Panel>
+          </Tabs>
+        </div>
       </div>
     </div>
   )

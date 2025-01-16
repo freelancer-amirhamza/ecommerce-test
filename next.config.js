@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify:true,
   images: {
-    domains: ['drfurithemes.com']
+    domains: ['drfurithemes.com', 'images.unsplash.com', 'plus.unsplash.com']
   },
   env: {
     FIREBASE_API_KEY: "AIzaSyAGS2SPk9CGbdqJT98Gup-c1Futw-nUvPI",

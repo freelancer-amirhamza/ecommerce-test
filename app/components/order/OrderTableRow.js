@@ -18,8 +18,8 @@ const OrderTableRow = ({  items,  order_id, total,  payment_success,  created_at
             <div className="">
               {items.map((item, i) => (
                   <Link key={i} href={`/products/${item.id}`}>
-                   <h3  className="text-sm cursor-pointer hover:text-primary font-bold text-title">
-                   {item?.name} <span className="text-sm text-gray-500">( {item?.quantity} x)</span>
+                   <h3  className="text-sm cursor-pointer hover:text-primary font-bold truncate line-clamp-1 text-title">
+                   {item?.name } <span className="text-sm text-gray-500">( {item?.quantity} x)</span>
                    </h3>
                    </Link>
                  ) )}
